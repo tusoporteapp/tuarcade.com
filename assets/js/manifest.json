@@ -25,6 +25,6 @@
     "background_color": "#FFFFFF",
 	"font-color": "#000000",
     "theme_color": "#FFFFFF",
-    "display": "standalone",
+    "display": "fullscreen",
     "orientation": "portrait"
 }
