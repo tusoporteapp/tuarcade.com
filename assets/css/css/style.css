@@ -1,0 +1,82 @@
+/* *
+* Template Name: MyPortfolio
+* Updated: Sep 18 2023 with Bootstrap v5.3.2
+* Template URL: https://bootstrapmade.com/myportfolio-bootstrap-portfolio-website-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/ */
+
+/* --------------------------------------------------------------
+# General
+-------------------------------------------------------------- */
+
+body {
+  font-family: "Inconsolata", monospace;
+  color: #0d1e2d;
+}
+
+a {
+  color: #777;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: "Raleway", sans-serif;
+}
+
+.form-control {
+  border-radius: 0;
+  background: #f8f9fa;
+  border: 1px solid transparent;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.form-control:active, .form-control:focus {
+  background: #eff1f4;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
+/* Services */
+
+/* Contact Form */
+
+/* --------------------------------------------------------------
+# Header
+-------------------------------------------------------------- */
+
+/* Custom Navmenu */
+
+/* Custom Navbar */
+
+.custom-navbar {
+  padding-top: 50px;
+  width: 100%;
+}
+
+@media (max-width: 780px) {
+  .custom-navbar > .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 1.7rem;
+}
+
+/* Burger */
+
+/* Hover */
+
+/* Click */
+
+/* --------------------------------------------------------------
+# Footer
+-------------------------------------------------------------- */
+
