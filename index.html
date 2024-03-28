@@ -1,141 +1,113 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html data-bs-theme="auto" lang="es-mx">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>MyResume Bootstrap Template - Index</title>
+    <title>Products - Brand</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i">
-    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/boxicons.css">
-    <link rel="stylesheet" href="assets/css/swiper-icons.css">
-    <link rel="stylesheet" href="assets/css/aos.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/aos/aos.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/vendor/boxicons/css/boxicons.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/glightbox/css/glightbox.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="assets/css/Hero-Features-icons.css">
+    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
 </head>
 
 <body>
-    <main id="main">
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Portfolio</h2>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-app">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-1.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>App</p>
-                                <div class="portfolio-links"><a class="portfolio-details-lightbox" href="https://play.famobi.com/alien-attack/A-FAMOBI-COM" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-web">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-2.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-app">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-3.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>App</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-card">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-4.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 2</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-web">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-5.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 2</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-app">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-6.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>App</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-card">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-7.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 1</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-card">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-8.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 3</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-4 portfolio-item filter-web">
-                        <div class="portfolio-wrap"><img class="img-fluid" src="assets/img/portfolio/portfolio-9.jpg" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links"><a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a><a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer id="footer">
-        <div class="container">
-            <h3>Brandon Johnson</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-            <div class="social-links"><a href="#" class="twitter"><i class="bx bxl-twitter"></i></a><a href="#" class="facebook"><i class="bx bxl-facebook"></i></a><a href="#" class="instagram"><i class="bx bxl-instagram"></i></a><a href="#" class="google-plus"><i class="bx bxl-skype"></i></a><a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a></div>
-            <div class="copyright"><span> © Copyright </span><strong><span>MyResume</span></strong><span>. All Rights Reserved </span></div>
-            <div class="credits"><span> Designed by </span><a href="https://bootstrapmade.com/">BootstrapMade</a></div>
+    <nav class="navbar navbar-expand-md sticky-top shadow-sm navbar-shrink py-3 navbar-light" id="mainNav" style="margin: 10px;border-radius: 5px;border-width: 1px;border-style: groove;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;assets/img/180.png&quot;) center / cover;"></span><span>JUEGA</span></a>
+            <div><button class="btn btn-primary btn-sm" type="button" style="border-bottom-right-radius: 0px;border-top-right-radius: 0px;"><i class="la la-share"></i></button><button class="btn btn-primary btn-sm" type="button" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;"><i class="la la-rocket"></i></button></div>
         </div>
-    </footer><a class="d-flex justify-content-center align-items-center back-to-top" href="#"><i class="bi bi-arrow-up-short"></i></a>
+    </nav>
+    <section style="margin: 10px;">
+        <div class="row">
+            <div class="col-6"><a href="g/AlienAttack.html"><img class="img-fluid" style="border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;" src="https://ik.imagekit.io/sjyfpsp1n/portal/html5games/images/tmp/180/AlienAttackTeaser.jpg"></a></div>
+        </div>
+    </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/js/vendor/aos/aos.js"></script>
-    <script src="assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/js/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/js/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/js/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/js/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/js/vendor/php-email-form/validate.js"></script>
-    <script src="assets/js/js/main.js"></script>
+    <script src="assets/js/bold-and-bright.js"></script>
 </body>
 
 </html>

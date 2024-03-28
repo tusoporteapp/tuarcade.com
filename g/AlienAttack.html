@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="es-mx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Products - Brand</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="../assets/css/Hero-Features-icons.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md fixed-top shadow-sm navbar-shrink py-3 navbar-light" id="mainNav" style="margin: 10px;border-radius: 5px;border-width: 1px;border-style: groove;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;../assets/img/180.png&quot;) center / cover;"></span><span>JUEGA</span></a>
+            <div><button class="btn btn-primary btn-sm" id="shareButton" type="button" style="border-bottom-right-radius: 0px;border-top-right-radius: 0px;"><i class="la la-share"></i></button><button class="btn btn-primary btn-sm" type="button" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;"><i class="la la-rocket"></i></button></div>
+        </div>
+    </nav>
+    <section>
+        <div style="height: 300px;background: url(&quot;https://ik.imagekit.io/sjyfpsp1n/marketing/screens/portrait/AlienAttack_portrait_03.jpeg&quot;) center / cover;"></div>
+        <div class="container h-100 position-relative" style="top: -50px;">
+            <div class="row gy-5 gy-lg-0 row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body shadow pt-5 p-4" style="border-bottom-right-radius: 16px;border-bottom-left-radius: 16px;">
+                            <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center position-absolute mb-3 bs-icon lg" style="top: -30px;background: url(&quot;https://ik.imagekit.io/sjyfpsp1n/portal/html5games/images/tmp/180/AlienAttackTeaser.jpg&quot;) center / cover;"></div>
+                            <h4 class="card-title">Alien Attack</h4>
+                            <h6 class="text-muted card-subtitle mb-2">¡El último juego de disparos de naves espaciales en 2D!</h6>
+                            <div class="d-flex align-items-center"><button class="btn btn-primary btn-sm" type="button" data-bs-target="#modal-1" data-bs-toggle="modal" style="width: 100%;border-top-right-radius: 0px;border-bottom-right-radius: 0px;">JUGAR&nbsp;<i class="la la-play"></i></button><button class="btn btn-primary btn-sm" type="button" data-bs-target="#modal-1" data-bs-toggle="modal" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;"><i class="la la-slideshare"></i></button></div>
+                            <p>¡Despega y domina el cosmos en Alien Attack! 🚀👽 ¡Un shooter espacial 2D lleno de acción y emoción! Enfréntate a oleadas de aliens, mejora tu nave y desafía a jefes épicos. ¡Demuestra tu habilidad y alcanza la cima del ranking! 🌌 ¡Para todas las edades!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen" role="document">
+            <div class="modal-content">
+                <div class="ratio ratio-16x9" style="height: 100vh;"><iframe src="https://games.cdn.famobi.com/html5games/c/cut-the-rope/v020/?fg_domain=play.famobi.com&amp;fg_aid=A-FAMOBI-COM&amp;fg_uid=4531b37c-a8e0-4a67-9ebd-e8d3190b6277&amp;fg_pid=96ab9c2f-6013-4b31-96dc-ccb5c7a89329&amp;fg_beat=817&amp;original_ref="></iframe></div>
+                <div class="d-flex align-items-center"><a class="btn btn-primary" role="button" href="javascript:location.reload()" style="width: 100%;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;">CERRAR</a><img class="img-fluid" src="../assets/img/180.png" style="width: 45px;"></div>
+            </div>
+        </div>
+    </div><script>
+document.getElementById("shareButton").addEventListener("click", function() {
+    // Verificar si el navegador soporta la API de Web Share
+    if (navigator.share) {
+        // Definir el mensaje a compartir
+        const message = "¡Hey entra a Marketgame y juega este juego super divertido";
+
+        // Obtener la URL actual
+        const url = window.location.href;
+
+        // Compartir la URL y el mensaje utilizando la API de Web Share
+        navigator.share({
+            title: document.title,
+            text: message,
+            url: url,
+        })
+        .then(() => console.log("Compartido exitosamente"))
+        .catch((error) => console.error("Error al compartir:", error));
+    } else {
+        // Mensaje alternativo si el navegador no soporta la API de Web Share
+        alert("Tu navegador no soporta la función de compartir.");
+    }
+});
+</script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bold-and-bright.js"></script>
+</body>
+
+</html>
